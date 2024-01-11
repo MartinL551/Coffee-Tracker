@@ -9,18 +9,6 @@ import React, { useState, useEffect } from 'react';
 
 
  
-
-
-
- let defaultCoffeePlace = [
-  {
- name: "Example Coffee Place",
- googleAPILocation: "costa, ,london",
- coffeeData: [{name: "Other",count: "2"}, {name: "Latte",count: "4"}, {name: "Espresso", count: "10"}]
-},
-]
-
- 
 interface coffeePlacesConfig extends Array<rowConfig>{}
 
 interface rowConfig {
@@ -34,10 +22,20 @@ interface coffeeConfig {
   count: number;
 }
 
+let defaultCoffeePlace =[
+    {
+        name: "Example Coffee Place",
+        googleAPILocation: "costa,london",
+        coffeeData: [{name: "Other",count: 2}, {name: "Latte",count: 4}, {name: "Espresso", count: 10}]
+    } ] as coffeePlacesConfig
 
 
 
+let firstLoadCoffeePlaces = [] as coffeePlacesConfig;
 
+if(window != undefined){
+    firstLoadCoffeePlaces = JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig;
+}
 
 
 
@@ -47,13 +45,16 @@ interface coffeeConfig {
 
 export default function Home() {
 
-
-  const [coffeePlaces, setCoffeePlaces] = useState<coffeePlacesConfig>( JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig )
+    const  [coffeePlaces, setCoffeePlaces] = useState<coffeePlacesConfig>(firstLoadCoffeePlaces)
   const [ showForm, setShowForm ] = useState<Boolean>(false)
 
+
+
   useEffect(() => {
-      console.log("Updating Data From Local Storage")
-      localStorage.setItem('coffeePlaces', JSON.stringify(coffeePlaces))
+        if(window != undefined){
+            localStorage.setItem('coffeePlaces', JSON.stringify(coffeePlaces))
+        }
+
   }, [coffeePlaces])
 
 
@@ -75,7 +76,7 @@ export default function Home() {
         </div>
         <div className='w-3/4 items-center m-auto'>
           {   
-              coffeePlaces.length === 0 ? <div> Loading </div> : coffeePlaces.map((place : rowConfig, index : number) =>{
+              coffeePlaces.length === 0 ? <div className="text-center"> No Coffee Places Added Currently</div> : coffeePlaces.map((place : rowConfig, index : number) =>{
                 return (<CoffePlaceRow key={ index.toString()} index={ index }  name={place.name} googleAPILocation={place.googleAPILocation} coffeeData={place.coffeeData} coffeePlaces={coffeePlaces} setCoffeePlaces={setCoffeePlaces}/>)
               })
           }

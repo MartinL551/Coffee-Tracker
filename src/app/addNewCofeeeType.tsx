@@ -63,7 +63,7 @@ export default function AddNewCoffeeType( { index, coffeePlaces, setCoffeePlaces
     }
 
     return (
-        <div id="defaultModal"  aria-hidden="true" className="w-full">
+        <div id="defaultModal"  aria-hidden="true" className="absolute w-50% z-50 p-4 overflow-x-hidden overflow-y-auto max-h-full">
             <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={ () => {setShowForm(false)} }>Close Form</button>
               

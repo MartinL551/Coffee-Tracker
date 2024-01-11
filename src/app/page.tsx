@@ -22,20 +22,11 @@ interface coffeeConfig {
   count: number;
 }
 
-let defaultCoffeePlace =[
-    {
-        name: "Example Coffee Place",
-        googleAPILocation: "costa,london",
-        coffeeData: [{name: "Other",count: 2}, {name: "Latte",count: 4}, {name: "Espresso", count: 10}]
-    } ] as coffeePlacesConfig
 
 
 
-let firstLoadCoffeePlaces = [] as coffeePlacesConfig;
 
-if(typeof window != undefined){
-    firstLoadCoffeePlaces = JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig;
-}
+
 
 
 
@@ -45,9 +36,14 @@ if(typeof window != undefined){
 
 export default function Home() {
 
-    const  [coffeePlaces, setCoffeePlaces] = useState<coffeePlacesConfig>(firstLoadCoffeePlaces)
+    const  [coffeePlaces, setCoffeePlaces] = useState<coffeePlacesConfig>([])
   const [ showForm, setShowForm ] = useState<Boolean>(false)
 
+
+    useEffect(() => {
+
+        setCoffeePlaces(JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
+    }, [])
 
 
   useEffect(() => {

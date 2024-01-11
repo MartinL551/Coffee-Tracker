@@ -33,7 +33,7 @@ let defaultCoffeePlace =[
 
 let firstLoadCoffeePlaces = [] as coffeePlacesConfig;
 
-if(window != undefined){
+if(typeof window != undefined){
     firstLoadCoffeePlaces = JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig;
 }
 
@@ -51,7 +51,7 @@ export default function Home() {
 
 
   useEffect(() => {
-        if(window != undefined){
+        if(typeof  window != undefined){
             localStorage.setItem('coffeePlaces', JSON.stringify(coffeePlaces))
         }
 

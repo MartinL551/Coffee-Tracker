@@ -1,9 +1,12 @@
 import Image from 'next/image'
 import OtherCofeeIcon from "../../public/Imgs/other-coffee.png";
 
+interface dataConfig {
+    count: number;
+}
 
 
-export default function CountAnimated({ count }){
+export default function CountAnimated({ count } : dataConfig){
 
     let countQuotientArray = []
     let longCount = false; 

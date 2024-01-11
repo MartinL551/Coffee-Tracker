@@ -81,7 +81,7 @@ export default function Home() {
           }
         </div>
         <div className='flex justify-center mt-20 mt-1 mb-2'>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={ () => {setShowForm(true)} }>Add Coffee Place</button>
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded relative" onClick={ () => {setShowForm(true)} }>Add Coffee Place</button>
           </div>
       </div>
       <footer className='w-full bg-white text-center my-2'>

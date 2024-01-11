@@ -25,31 +25,38 @@ export default function AddNewCoffeePlace( { coffeePlaces, setCoffeePlaces, setS
     
     const formHandler = ( event : React.FormEvent<HTMLFormElement> ) =>{ 
         event.preventDefault()
-        let name = event.target[0].value;
-        let placeName = event.target[1].value;
-        let street = event.target[2].value
-        let city = event.target[3].value
+        let name = event.currentTarget[0] as HTMLInputElement;
+        let placeName = event.currentTarget[1] as HTMLInputElement;
+        let street = event.currentTarget[2] as HTMLInputElement;
+        let city = event.currentTarget[3] as HTMLInputElement;
 
-        if( name === null || name === undefined || name === ""){
+        let nameVal = name.value;
+        let placeNameVal = placeName.value;
+        let streetVal = street.value;
+        let cityVal = city.value;
+
+
+
+        if( nameVal === null || nameVal === undefined || nameVal === ""){
             alert("Please Enter A Valid Name")
             return
         }
 
-        if( placeName === null || placeName === undefined || placeName === ""){
+        if( placeNameVal === null || placeNameVal === undefined || placeNameVal === ""){
             alert("Please Enter A Valid Place Name")
             return
         }
 
 
-        if( city === null || city === undefined || city === ""){
+        if( cityVal === null || cityVal === undefined || cityVal === ""){
             alert("Please Enter A Valid City")
             return
         }
 
        
         let coffeeRow = {
-            name: name,
-            googleAPILocation: `${placeName},${street},${city}`,
+            name: nameVal,
+            googleAPILocation: `${placeNameVal},${streetVal},${cityVal}`,
             coffeeData: [{name: "Other", count: "0"}]
         }
 
@@ -63,8 +70,8 @@ export default function AddNewCoffeePlace( { coffeePlaces, setCoffeePlaces, setS
     }
 
     return (
-        <div id="defaultModal"  aria-hidden="true" className="fixed w-fit z-50 p-4 overflow-x-hidden overflow-y-auto max-h-full">
-            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div id="defaultModal"  aria-hidden="true" className="absolute w-50% z-50 p-4 overflow-x-hidden overflow-y-auto max-h-full">
+            <div className="bg-white rounded-lg shadow dark:bg-gray-700">
                 <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={ () => {setShowForm(false)} }>Close Form</button>
                 <form action="" onSubmit={ formHandler } className="grid">
                     <ul className="m-3">

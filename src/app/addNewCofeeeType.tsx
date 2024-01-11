@@ -47,7 +47,7 @@ export default function AddNewCoffeeType( { index, coffeePlaces, setCoffeePlaces
 
     const selectHandler = ( event : React.ChangeEvent<HTMLSelectElement> ) =>{ 
         event.preventDefault()
-        let type = event.target.value;
+        let type = event.currentTarget.value;
         let newCoffeePlaces = [...coffeePlaces]
 
         let newCoffeeType = {

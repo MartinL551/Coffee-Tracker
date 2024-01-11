@@ -63,15 +63,15 @@ export default function AddNewCoffeeType( { index, coffeePlaces, setCoffeePlaces
     }
 
     return (
-        <div id="defaultModal"  aria-hidden="true" className="fixed w-fit z-50 p-4 overflow-x-hidden overflow-y-auto max-h-full">
+        <div id="defaultModal"  aria-hidden="true" className="w-full">
             <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={ () => {setShowForm(false)} }>Close Form</button>
               
                     <ul className="m-3">
-                        <li className="grid grid-col-2">
-                            <label htmlFor="type">Type</label>
-                            <select onChange={ selectHandler } name="type" id="select_type">
-                            <option defaultValue="true">
+                        <li className="grid w-full" >
+                            <label htmlFor="type" className="w-full">Type</label>
+                            <select className="w-full"  onChange={ selectHandler } name="type" id="select_type">
+                            <option defaultValue="true" className="w-full break-words w-full">
                                  Select Type of Coffee
                             </option>
                                 {

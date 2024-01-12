@@ -40,18 +40,22 @@ export default function Home() {
   const [ showForm, setShowForm ] = useState<Boolean>(false)
 
 
-    useEffect(() => {
-
-        setCoffeePlaces(JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
-    }, [])
 
 
   useEffect(() => {
-        if(typeof  window != undefined){
-            localStorage.setItem('coffeePlaces', JSON.stringify(coffeePlaces))
-        }
+
+
+
+        localStorage.setItem('coffeePlaces', JSON.stringify(coffeePlaces))
+
 
   }, [coffeePlaces])
+
+    useEffect(() => {
+        console.log("get",JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
+        setCoffeePlaces(JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
+    }, [])
+
 
 
 
@@ -67,7 +71,6 @@ export default function Home() {
               showForm && <AddNewCoffeePlace coffeePlaces={coffeePlaces} setShowForm={setShowForm} setCoffeePlaces={setCoffeePlaces} /> 
             }
           </div>
-          
           
         </div>
         <div className='w-3/4 items-center m-auto'>

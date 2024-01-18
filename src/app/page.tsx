@@ -52,7 +52,13 @@ export default function Home() {
 
     useEffect(() => {
         console.log("loading from local storage")
-        setCoffeePlaces(JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
+    if(JSON.parse(localStorage.getItem("coffeePlaces")!) != null){
+            setCoffeePlaces(JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
+        }else{
+            setCoffeePlaces([]);
+        }
+
+
     }, [])
 
 

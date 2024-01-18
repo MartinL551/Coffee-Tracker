@@ -43,16 +43,15 @@ export default function Home() {
 
 
   useEffect(() => {
-
-
-
-        localStorage.setItem('coffeePlaces', JSON.stringify(coffeePlaces))
-
+      console.log("CoffeePlaces Length", coffeePlaces.length);
+      if(coffeePlaces.length > 0){
+          localStorage.setItem('coffeePlaces', JSON.stringify(coffeePlaces))
+      }
 
   }, [coffeePlaces])
 
     useEffect(() => {
-        console.log("get",JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
+        console.log("loading from local storage")
         setCoffeePlaces(JSON.parse(localStorage.getItem("coffeePlaces")!) as coffeePlacesConfig);
     }, [])
 
